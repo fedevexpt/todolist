@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="App">
       <Header />
       <Editor onCreate={onCreate} />
       <List todos={todos} />

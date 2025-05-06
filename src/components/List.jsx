@@ -7,7 +7,7 @@ function List({ todos }) {
       <h1>오늘의 todo....</h1>
       <input type="text" placeholder="검색하세요." />
       <div className="todos_wrapper">
-        {filterTodos.map((todo) => {
+        {todos.map((todo) => {
           return <TodoItem key={todo.id} {...todo} />;
         })}
       </div>
