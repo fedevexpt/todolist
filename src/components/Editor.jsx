@@ -1,5 +1,10 @@
 function Editor() {
-  return <div>에디터</div>;
+  return (
+    <div>
+      <input type="text" placeholder="새로운 todo를 입력하세요" />
+      <button>입력</button>
+    </div>
+  );
 }
 
 export default Editor;
