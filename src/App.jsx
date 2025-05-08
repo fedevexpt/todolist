@@ -13,13 +13,13 @@ const mokdata = [
   },
   {
     id: 2,
-    content: "리액트공부하기",
+    content: "청소하기",
     date: new Date(),
     isdone: false,
   },
   {
     id: 3,
-    content: "리액트공부하기",
+    content: "산책하기",
     date: new Date(),
     isdone: false,
   },
