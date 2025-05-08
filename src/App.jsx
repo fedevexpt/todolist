@@ -9,7 +9,7 @@ const mokdata = [
     id: 1,
     content: "리액트공부하기",
     date: new Date(),
-    isdone: true,
+    isdone: false,
   },
   {
     id: 2,
@@ -27,23 +27,44 @@ const mokdata = [
 
 function App() {
   const [todos, setTodos] = useState(mokdata);
-  const idRef = useRef(3);
+  const idRef = useRef(4);
 
   const onCreate = (content) => {
     const newTodo = {
       id: idRef.current++,
       content: content,
       date: new Date(),
-      isdone: false,
+      isDone: false,
     };
     setTodos([newTodo, ...todos]);
+  };
+
+  const onToggle = (id) => {
+    const updateNewTodo = todos.map((todo) => {
+      if (todo.id === id) {
+        const updated = {
+          ...todo,
+          isDone: !todo.isDone,
+        };
+        console.log("✅ 토글된 항목:", updated);
+        return updated;
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updateNewTodo);
+  };
+
+  const onDelete = (id) => {
+    const deleteTodo = todos.filter((todo) => todo.id !== id);
+    setTodos(deleteTodo);
   };
 
   return (
     <div className="App">
       <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} />
+      <List todos={todos} onToggle={onToggle} onDelete={onDelete} />
     </div>
   );
 }
