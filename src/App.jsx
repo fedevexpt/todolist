@@ -60,11 +60,23 @@ function App() {
     setTodos(deleteTodo);
   };
 
+  const onUpdate = (id, newContent) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, content: newContent } : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="App">
       <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} onToggle={onToggle} onDelete={onDelete} />
+      <List
+        todos={todos}
+        onToggle={onToggle}
+        onDelete={onDelete}
+        onUpdate={onUpdate}
+      />
     </div>
   );
 }

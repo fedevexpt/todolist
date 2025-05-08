@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-function List({ todos, onToggle, onDelete }) {
+function List({ todos, onToggle, onDelete, onUpdate }) {
   const filterTodos = todos.filter((todo) => todo.isDone === true);
   return (
     <div>
@@ -14,6 +14,7 @@ function List({ todos, onToggle, onDelete }) {
               {...todo}
               onToggle={onToggle}
               onDelete={onDelete}
+              onUpdate={onUpdate}
             />
           );
         })}
