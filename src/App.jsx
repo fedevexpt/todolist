@@ -7,30 +7,33 @@ import { useState, useRef } from "react";
 const mokdata = [
   {
     id: 1,
+
     content: "리액트공부하기",
     date: new Date(),
-    isdone: false,
+    isDone: false,
   },
   {
     id: 2,
     content: "청소하기",
     date: new Date(),
-    isdone: false,
+    isDone: false,
   },
   {
     id: 3,
     content: "산책하기",
     date: new Date(),
-    isdone: false,
+    isDone: false,
   },
 ];
 
 function App() {
   const [todos, setTodos] = useState(mokdata);
+
   const idRef = useRef(4);
 
-  const onCreate = (content) => {
+  const onCreate = (content, time) => {
     const newTodo = {
+      time,
       id: idRef.current++,
       content: content,
       date: new Date(),

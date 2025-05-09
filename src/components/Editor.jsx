@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 
 function Editor({ onCreate }) {
   const [input, setInput] = useState("");
+  const [time, setTime] = useState("");
   const inputRef = useRef();
   const onChange = (e) => {
     setInput(e.target.value);
@@ -12,9 +13,9 @@ function Editor({ onCreate }) {
       inputRef.current.focus();
       return;
     }
-
-    onCreate(input);
+    onCreate(input, time);
     setInput("");
+    setTime("");
   };
 
   const onKeyDown = (e) => {
@@ -23,8 +24,13 @@ function Editor({ onCreate }) {
     }
   };
 
+  const onChangeTime = (e) => {
+    setTime(e.target.value);
+  };
+
   return (
     <div>
+      <input type="time" value={time} onChange={onChangeTime} />
       <input
         ref={inputRef}
         type="text"

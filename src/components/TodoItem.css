@@ -3,7 +3,12 @@
   justify-content: space-between;
   padding: 20px 0;
 }
+.contentFlex {
+  display: flex;
+  gap: 10px;
+}
 .checked {
+  display: flex;
   text-decoration: line-through;
   color: red;
 }

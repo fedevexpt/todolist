@@ -1,7 +1,16 @@
 import "./TodoItem.css";
 import { useState } from "react";
 
-function TodoItem({ id, content, date, isDone, onToggle, onDelete, onUpdate }) {
+function TodoItem({
+  id,
+  time,
+  content,
+  date,
+  isDone,
+  onToggle,
+  onDelete,
+  onUpdate,
+}) {
   const [isEdit, setIsEdit] = useState(false);
   const [editContent, setEditContent] = useState(content);
 
@@ -13,6 +22,7 @@ function TodoItem({ id, content, date, isDone, onToggle, onDelete, onUpdate }) {
   return (
     <div className="TodoItem">
       <input type="checkbox" checked={!!isDone} onChange={() => onToggle(id)} />
+
       {isEdit ? (
         <>
           <input
@@ -21,9 +31,12 @@ function TodoItem({ id, content, date, isDone, onToggle, onDelete, onUpdate }) {
           />
         </>
       ) : (
-        <div className={`content ${isDone ? "checked" : ""}`}>{content}</div>
+        <div className={`contentFlex content ${isDone ? "checked" : ""}`}>
+          <div className="time">{time}</div>
+          <div>{content}</div>
+        </div>
       )}
-      <div className="date">{date.toLocaleString()}</div>
+      <div className="date">{date.toLocaleDateString()}</div>
       {isEdit ? (
         <button onClick={hadleSave}>저장</button>
       ) : (
