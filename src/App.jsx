@@ -1,27 +1,15 @@
+import "./index.css";
 import "./App.css";
 import List from "./components/List";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Editor from "./components/Editor";
+import Count from "./components/Count";
 import { useState, useRef } from "react";
 
 const mokdata = [
   {
-    id: 1,
-
-    content: "리액트공부하기",
-    date: new Date(),
-    isDone: false,
-  },
-  {
-    id: 2,
-    content: "청소하기",
-    date: new Date(),
-    isDone: false,
-  },
-  {
-    id: 3,
-    content: "산책하기",
-    date: new Date(),
+    id: 0,
+    content: "할 일을 입력하세요.",
     isDone: false,
   },
 ];
@@ -29,7 +17,7 @@ const mokdata = [
 function App() {
   const [todos, setTodos] = useState(mokdata);
 
-  const idRef = useRef(4);
+  const idRef = useRef(1);
 
   const onCreate = (content, time) => {
     const newTodo = {
@@ -72,14 +60,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Editor onCreate={onCreate} />
-      <List
-        todos={todos}
-        onToggle={onToggle}
-        onDelete={onDelete}
-        onUpdate={onUpdate}
-      />
+      <div className="todoList">
+        {/* <Header /> */}
+
+        <Editor onCreate={onCreate} />
+        <Count todos={todos} />
+        <List
+          todos={todos}
+          onToggle={onToggle}
+          onDelete={onDelete}
+          onUpdate={onUpdate}
+        />
+      </div>
     </div>
   );
 }

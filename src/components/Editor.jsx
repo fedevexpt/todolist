@@ -1,3 +1,4 @@
+import "./Editor.css";
 import { useState, useRef } from "react";
 
 function Editor({ onCreate }) {
@@ -28,18 +29,41 @@ function Editor({ onCreate }) {
     setTime(e.target.value);
   };
 
+  const today = new Date();
+
+  const day = today
+    .toLocaleDateString("en-US", { weekday: "long" })
+    .toUpperCase(); // WEDNESDAY
+  const date = today.getDate(); // 22
+  const month = today
+    .toLocaleDateString("en-US", { month: "short" })
+    .toUpperCase(); // NOV
+
+  const fullDate = `${day}, ${date} ${month}`;
+
   return (
     <div>
-      <input type="time" value={time} onChange={onChangeTime} />
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="새로운 todo를 입력하세요"
-        value={input}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-      />
-      <button onClick={onSubmit}>입력</button>
+      <h1 className="fullDate">{fullDate}</h1>
+      <div className="inputbox">
+        <div className="timebox">
+          <input
+            className="inputtime"
+            type="time"
+            step="60"
+            value={time}
+            onChange={onChangeTime}
+          />
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="새로운 todo를 입력하세요"
+            value={input}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+          />
+        </div>
+        <button onClick={onSubmit}>입력</button>
+      </div>
     </div>
   );
 }

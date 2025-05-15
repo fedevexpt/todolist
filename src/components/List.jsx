@@ -1,3 +1,4 @@
+import "../components/List.css";
 import TodoItem from "./TodoItem";
 import { useState } from "react";
 
@@ -14,9 +15,9 @@ function List({ todos, onToggle, onDelete, onUpdate }) {
   };
 
   return (
-    <div>
-      <h1>오늘의 todo....</h1>
+    <div className="list">
       <input
+        className="search"
         type="text"
         placeholder="검색하세요."
         onChange={(e) => {

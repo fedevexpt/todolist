@@ -1,0 +1,13 @@
+.list {
+  width: 80%;
+  margin: 0 auto;
+}
+.list .search {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #f7f6f3;
+  border-bottom: 1px solid #dddddd;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}

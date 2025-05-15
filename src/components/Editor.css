@@ -1,0 +1,23 @@
+.fullDate {
+  text-align: center;
+}
+.inputbox {
+  display: flex;
+}
+.timebox {
+  width: 80%;
+  border: 1px solid #222;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 0 auto;
+}
+.timebox input {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: #f7f6f3;
+}
+.inputtime {
+  margin-right: 10px;
+}

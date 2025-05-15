@@ -14,9 +14,24 @@ function TodoItem({
   const [isEdit, setIsEdit] = useState(false);
   const [editContent, setEditContent] = useState(content);
 
-  const hadleSave = () => {
+  const handleSave = () => {
     if (editContent.trim() === "") return;
     onUpdate(id, editContent), setIsEdit(false);
+  };
+
+  const timeampm = (timestr) => {
+    if (!timestr) return "";
+
+    const [hours, minutes] = timestr.split(":").map(Number);
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+
+    return date.toLocaleTimeString("en-us", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
   };
 
   return (
@@ -32,13 +47,13 @@ function TodoItem({
         </>
       ) : (
         <div className={`contentFlex content ${isDone ? "checked" : ""}`}>
-          <div className="time">{time}</div>
-          <div>{content}</div>
+          <div className="content">{content}</div>{" "}
+          <div className="time">{timeampm(time)}</div>
         </div>
       )}
-      <div className="date">{date.toLocaleDateString()}</div>
+
       {isEdit ? (
-        <button onClick={hadleSave}>저장</button>
+        <button onClick={handleSave}>저장</button>
       ) : (
         <button
           onClick={() => {
